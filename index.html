@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     const computerOptions = ['rock', 'paper', 'scissors'];
+     function computerPlay() {
+         return computerOptions[Math.floor(Math.random()*3)]
+     }
+
+     function playRound(playerSelection, computerSelection) { 
+        if (playerSelection.toLowerCase() === computerSelection) {
+             return "It's a tie!";
+        } else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'paper') {
+            return "Round lost!";
+        } else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors') {
+            return "Round won!";
+        } else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'rock') {
+            return "Round won!";
+        } else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'scissors') {
+            return "Round lost!";
+        } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'rock') {
+            return "Round lost!";
+        } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'paper') {
+            return "Round won!";
+        }
+    }
+     
+     function game() {
+        let playerPoints = 0;
+        let computerPoints = 0;
+        for (let i = 0; i < 5; i++) {
+            let computerSelection = computerPlay();
+            let playerSelection = prompt('Choose one! Rock, Paper, or Scissors!');
+            let result = playRound(playerSelection, computerSelection);
+            if (result === "Round won!") {
+                console.log(" Player has " + ++playerPoints + " points.");
+            } else if (result === "Round lost!") {
+                console.log("Computer has " + ++computerPoints + " points.");
+            } else {
+                console.log("Tie round."); 
+            }
+        }
+        if (playerPoints > computerPoints) {
+            console.log("Player Wins!");
+        } else if (computerPoints > playerPoints) {
+            console.log("Computer Wins!");
+        } else if (computerPoints === playerPoints) {
+            console.log("Tie game!");
+        } 
+    }
+    
+   
+     
+     game();
+     </script>
+</body>
